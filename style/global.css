@@ -6,6 +6,9 @@
     text-decoration: none;
     box-sizing: border-box;
 }
+/* #F3705A */
+/* #FFD15C */
+/* #66C6B9 */
 
 html{
     --black: #0D114F;
@@ -28,6 +31,7 @@ html{
 #logo{
     width: 100px;
     padding: 20px;
+    margin-left: -4rem;
 }
 
 .userIcon{
@@ -35,6 +39,7 @@ html{
 }
 
 body{ 
+    display: flex;
     height: 100vh; /*view port: screen height, without scroll*/
     background: var(--background);
 }
