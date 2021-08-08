@@ -14,7 +14,7 @@ html{
     --black: #0D114F;
     --white: #FAFAFA;
     --red: #E83F5B;
-    --ligh-blue: #E0ECFF;
+    --light-blue: #E0ECFF;
     --blue: #3485FF;
     --background: #F6FAFF;
     --overlay: #040911;
@@ -97,7 +97,7 @@ button:hover, .button:hover{
 }
 
 
-button > img
+button > img,
 .button > img{
     margin-right: 1rem;
     width: 2rem;
