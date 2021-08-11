@@ -93,12 +93,11 @@
 /*Asked questions*/
 
 .questionIcon{
-    width: 5rem;
+    width: 2rem;
 }
 
 #questions div a img{
     width: 2rem;
-    margin-right: .5rem;
 }
 
 .question-wrapper{
@@ -115,6 +114,10 @@
 
 .question-wrapper .question-content p{
     margin-left: 1.6rem;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    min-height: 5.5rem;
 }
 
 .question-wrapper .actions{
@@ -134,4 +137,9 @@
 
 .question-wrapper .actions > a + a{ /* + get the brother element*/
     margin-left: 2.4rem;
+}
+
+/*Question read*/
+.question-wrapper.read{
+    background: var(--grey-medium);
 }
