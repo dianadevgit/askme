@@ -20,6 +20,12 @@ __dirname get the folder of the current file
 In this case it will be '/src'.
 */
 
+/*Middleware to enable the communication between front and backend routes 
+(Ex.: to be able to use this route: route.post('/room/:room/:question/:action', questionController.index) )
+*/
+server.use(express.urlencoded({extended: true}))
+/*The encoded will get the form content that has been passed through url and translate to use it 
+on the controller. */
 
 server.use(route)
 
