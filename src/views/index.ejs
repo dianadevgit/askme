@@ -18,7 +18,9 @@
 <body>
     <div id="home" class="content">
         <header>
-            <img src="images/logo.svg" alt="AskQuestion Logo" id="logo"/>
+            <a href="/index">
+                <img src="/images/logo.svg" alt="AskQuestion Logo" id="logo"/>
+            </a>    
         </header>
         <div id="bg">
             <div class="ball top"></div>
@@ -27,32 +29,8 @@
         </div>
         <main>
             <div class="container">
-                <section>
-                    <h2>Enter as a guest</h2>
-                    <form action="">
-                        <!-- Label provide acessibility -->
-                        <label class="sr-only" for="room-id">Key room</label>
-                        <input type="number" id="room-id" placeholder="Room key">
-                        <button>
-                            <img src="images/user-icon.svg" alt="Enter room" class="userIcon">
-                            Enter in the room
-                        </button>
-                    </form>
-                </section>
-
-                <div class="separator">
-                    <div></div>
-                    <div>or</div>
-                    <div></div>
-                </div>
-
-                <section>
-                    <h2>Create your own room</h2>
-                    <a href="create-room.html" class="button outlined">
-                        <!-- <img src="images/user-icon.svg" alt="Create room" class="userIcon"> -->
-                        Create Room
-                    </a>
-                </section>
+                <!--Will render according to url-->
+                <%- include(`parts/${page}`) %>
             </div>
         </main>
     </div>

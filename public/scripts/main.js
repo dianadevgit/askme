@@ -36,7 +36,7 @@ function handleClickBt(event, check){
 
     //Change the form action when click to confirm delete: /room/:room/:question/:action
     const form = document.querySelector(".modal form");
-    form.setAttribute("action",`/room/${roomId}/${questionId}/${action}`);
+    form.setAttribute("action",`/question/${roomId}/${questionId}/${action}`);
     
     //let checkAction = document.querySelector(".modal form").getAttribute("action");
     //console.log("checkAction:   "+checkAction);
