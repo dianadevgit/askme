@@ -143,3 +143,10 @@
 .question-wrapper.read{
     background: var(--grey-medium);
 }
+
+/*No question*/
+#no-question{
+    text-align: center;
+    color: var(--grey-blue);
+    font-family: 'Poppins', sans-serif;
+}

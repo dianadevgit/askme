@@ -12,7 +12,7 @@ route.get('/create-pass', (req, res)=> res.render("index",{page:'create-pass'}))
 
 route.post('/create-room', roomController.create);
 route.get('/room/:room', roomController.open);
-
+route.post('/enterroom', roomController.enter)
 
 route.post('/question/create/:room', questionController.create);
 /*Create a route like that: room/password/question/action */
