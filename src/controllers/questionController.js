@@ -3,18 +3,39 @@ const dataBase = require('../db/config')
 
 module.exports = {
 
-    index(req, res){
+    async index(req, res){
+        const db = await dataBase();
         
-        console.log('Teste console backend');
         /*Separate de variables*/
         const roomId = req.params.room;
         const questionId = req.params.question;
         const action = req.params.action;
         const password = req.body.password; //Post: password in the body
 
-        console.log(`room = ${roomId}, questionId = ${questionId}, action = ${action}, password = ${password}`);
+        /*Verify password*/
+        res.redirect(`/room/${roomId}`)
+        
+        const getRoom = await db.get(`SELECT * FROM rooms WHERE id = ${roomId}`);
+        
+        if (getRoom.pass == password){
+            
+            if (action == "delete"){
+                
+                await db.run(`DELETE FROM questions WHERE id = ${questionId}`)
+
+            }else if (action == "check" ){
+
+                await db.run(`UPDATE questions SET read = 1 WHERE id = ${questionId}`)
+            
+            }
+            res.redirect(`/room/${roomId}`);            
+        }else {
+            console.log("Dianaaaaa pass incorrect");
+            res.render('passIncorrect', {roomId: roomId})
+        }
 
     },
+
 
     async create(req,res){
         const db = await dataBase();
@@ -32,7 +53,6 @@ module.exports = {
         )`)
 
         res.redirect(`/room/${roomId}`)
-
     }
 }
 /*This is the backend route. To code the logical and business rule*/

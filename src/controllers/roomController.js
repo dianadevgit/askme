@@ -42,12 +42,30 @@ module.exports = {
     },
     
     /*Open room*/
-    open(req,res){
+    async open(req,res){
+        const db = await database();
         const roomId = req.params.room;
-        res.render("room",{roomId: roomId})
+        const questions = await db.all(`SELECT * FROM questions WHERE room = ${roomId} AND read = 0`)
+        const questionsRead = await db.all(`SELECT * FROM questions WHERE room = ${roomId} AND read = 1`)
+        
+        /*Check wheter there is no questions in the room, so a 
+          specific page will be showing*/
+        let hasQuestions = true;
+        if(questions.length ==0){
+            if(questionsRead.length ==0){
+                hasQuestions = false;
+            }
+        }
 
+        res.render("room",{roomId: roomId, questions: questions, questionsRead: questionsRead, hasQuestions: hasQuestions})
+
+    },
+
+    /*Enter room*/
+    async enter(req,res){
+        const roomId = req.body.roomId
+
+        res.redirect(`/room/${roomId}`)
     }
-
-
 
 }

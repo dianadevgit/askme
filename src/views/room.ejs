@@ -33,7 +33,7 @@
                     #<%= roomId %>
                     <img src="/images/copy.svg" class="roomIcon" alt="Copy room number">
                 </div>
-                <a href="#" class="button">
+                <a href="/create-pass" class="button">
                     <img src="/images/user-icon-white.svg" class="roomIcon" alt="Create new room">
                     Create Room
                 </a>
@@ -57,79 +57,60 @@
 
             <section id="questions">
                 <h2 class="sr-only">Questions</h2>
-                <div class="questions">
-
-                    <div class="question-wrapper">
+                <div class="questions">                    
+                    <% if (!hasQuestions){ %>
+                        <%- include(`parts/noQuestion`) %>
+                    <% } else { %>    
+                    <% questions.forEach(question => { %>
+                        <div class="question-wrapper">
                         
-                        <div class="question-content">
+                            <div class="question-content">
+                                
+                                <div class="user">
+                                    <img src="/images/user-avatar.svg" class="questionIcon" alt="Question">
+                                </div>
+                                <div class="question">
+                                    <p><%= question.title %></p>
+                                </div>
+    
+                            </div>
                             
-                            <div class="user">
-                                <img src="/images/user-avatar.svg" class="questionIcon" alt="Question">
+                            <div class="actions">
+                                <a href="#" class="check" data-id="<%= question.id %>">
+                                    <img src="/images/tick.svg" alt="Check as read">
+                                    Check as read
+                                </a>
+                                <a href="#" class="delete" data-id="<%= question.id %>">
+                                    <img src="/images/trash.svg" alt="Delete">
+                                    Delete
+                                </a>
                             </div>
-                            <div class="question">
-                                <p>What's the difference between const, var and let in JS?</p>
-                            </div>
-
                         </div>
-                        
-                        <div class="actions">
-                            <a href="#" class="check" data-id="2">
-                                <img src="/images/tick.svg" alt="Check as read">
-                                Check as read
-                            </a>
-                            <a href="#" class="delete" data-id="2">
-                                <img src="/images/trash.svg" alt="Delete">
-                                Delete
-                            </a>
-                        </div>
-                    </div>
+                    <% }) %>    
+                    <%};%>
 
-                    <div class="question-wrapper">
-                        
-                        <div class="question-content">
+                    <% questionsRead.forEach(questionRead => { %>    
+                        <div class="question-wrapper read">
                             
-                            <div class="user">
-                                <img src="/images/user-avatar.svg" class="questionIcon" alt="Question">
-                            </div>
-                            <div class="question">
-                                <p>What's React JS?</p>
-                            </div>
+                            <div class="question-content">
+                                
+                                <div class="user">
+                                    <img src="/images/user-avatar.svg" class="questionIcon" alt="Question">
+                                </div>
+                                <div class="question">
+                                    <p><%= questionRead.title %></p>
+                                </div>
 
-                        </div>
-                        
-                        <div class="actions">
-                            <a href="#" class="check" data-id="3">
-                                <img src="/images/tick.svg" alt="Check as read">
-                                Check as read
-                            </a>
-                            <a href="#" class="delete" data-id="3">
-                                <img src="/images/trash.svg" alt="Delete">
-                                Delete
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="question-wrapper read">
-                        
-                        <div class="question-content">
+                            </div>
                             
-                            <div class="user">
-                                <img src="/images/user-avatar.svg" class="questionIcon" alt="Question">
+                            <div class="actions">
+                                <a href="#" class="delete" data-id="<%= questionRead.id %>">
+                                    <img src="/images/trash.svg" alt="Delete">
+                                    Delete
+                                </a>
                             </div>
-                            <div class="question">
-                                <p>What's Type script?</p>
-                            </div>
-
                         </div>
-                        
-                        <div class="actions">
-                            <a href="#" class="delete" data-id="1">
-                                <img src="/images/trash.svg" alt="Delete">
-                                Delete
-                            </a>
-                        </div>
-                    </div>
-
+                    <% }); %>     
                 </div>
             </section>
         </main>
